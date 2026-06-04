@@ -1,10 +1,19 @@
 ---
 const {
-  title = "tebii",
   active = "writeups",
   items = [],
   currentSlug = "",
 } = Astro.props;
+
+// Find which group the current post lives in
+const activeGroupLabel = (() => {
+  for (const it of items) {
+    for (const grp of it.groups ?? []) {
+      if (grp.posts.some((p) => p.slug === currentSlug)) return grp.label;
+    }
+  }
+  return null;
+})();
 ---
 
 <div class="app">
@@ -25,11 +34,7 @@ const {
           <div class="ft-item-wrap">
             <div class="ft-row">
               <span class="ft-branch">{isLast ? "└─" : "├─"}</span>
-              <a
-                class={`ft-link ft-dir ${isActive ? "active" : ""}`}
-                href={it.href}
-              >
-                <span class="ft-icon">{hasGroups ? "󰉋 " : "󰉋 "}</span>
+              <a class={`ft-link ft-dir ${isActive ? "active" : ""}`} href={it.href}>
                 <span class="ft-name">{it.label}</span>
                 {typeof it.count === "number" && (
                   <span class="ft-count">{it.count}</span>
@@ -37,33 +42,31 @@ const {
               </a>
             </div>
 
-            {hasGroups &&
+            {hasGroups && isActive &&
               it.groups!.map((grp, gi) => {
                 const grpLast = gi === it.groups!.length - 1;
+                const isOpenGroup = grp.label === activeGroupLabel;
+                const pipe = isLast ? "   " : "│  ";
                 return (
                   <div class="ft-group">
-                    <div class="ft-row ft-row--sub">
-                      <span class="ft-indent">{isLast ? "   " : "│  "}</span>
+                    <div class="ft-row">
+                      <span class="ft-indent">{pipe}</span>
                       <span class="ft-branch">{grpLast ? "└─" : "├─"}</span>
-                      <span class="ft-link ft-subdir">
-                        <span class="ft-icon">󰉋 </span>
-                        <span class="ft-name">{grp.label}</span>
-                      </span>
+                      <span class="ft-subdir">{grp.label}</span>
                     </div>
 
-                    {grp.posts.map((post, pi) => {
+                    {isOpenGroup && grp.posts.map((post, pi) => {
                       const postLast = pi === grp.posts.length - 1;
                       const isCurrent = currentSlug === post.slug;
                       return (
-                        <div class="ft-row ft-row--file">
-                          <span class="ft-indent">{isLast ? "   " : "│  "}</span>
+                        <div class="ft-row">
+                          <span class="ft-indent">{pipe}</span>
                           <span class="ft-indent">{grpLast ? "   " : "│  "}</span>
                           <span class="ft-branch">{postLast ? "└─" : "├─"}</span>
                           <a
                             class={`ft-link ft-file ${isCurrent ? "current" : ""}`}
                             href={post.href}
                           >
-                            <span class="ft-icon"> </span>
                             <span class="ft-name">{post.label}</span>
                           </a>
                         </div>
