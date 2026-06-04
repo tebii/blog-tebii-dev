@@ -46,7 +46,7 @@ const active = activeKeyFromPath(Astro.url.pathname);
           <div class="term-tabs">
             <span class="term-tab active">{title}</span>
           </div>
-          <a class="term-actions" href="https://tebii.dev" aria-label="Go to tebii.dev">
+          <a class="term-actions" href="https://tebii.dev" aria-label="Go to tebii.dev" id="dots-link">
             <span class="dot y"></span><span class="dot g"></span><span class="dot r"></span>
           </a>
         </div>
@@ -64,5 +64,15 @@ const active = activeKeyFromPath(Astro.url.pathname);
       </div>
 
     </div>
+  <script>
+    document.getElementById('dots-link')?.addEventListener('click', e => {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).href;
+      const term = document.querySelector('.term') as HTMLElement;
+      sessionStorage.removeItem('visited');
+      term.classList.add('closing');
+      term.addEventListener('animationend', () => { window.location.href = href; }, { once: true });
+    });
+  </script>
 </body>
 </html>
