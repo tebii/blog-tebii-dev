@@ -254,7 +254,7 @@ article pre code{padding:0;border:none;background:transparent}
   padding: 14px 14px 14px 10px;
   position: sticky;
   top: 0;
-  align-self: start;
+  align-self: stretch;
 }
 
 .side-title{
@@ -330,11 +330,6 @@ article pre code{padding:0;border:none;background:transparent}
   white-space: nowrap;
 }
 
-.ft-icon {
-  flex-shrink: 0;
-  font-size: 13px;
-}
-
 .ft-dir {
   color: var(--blue);
   font-weight: 600;
@@ -348,7 +343,8 @@ article pre code{padding:0;border:none;background:transparent}
 .ft-subdir {
   color: var(--mauve);
   font-weight: 500;
-  cursor: default;
+  font-size: 13px;
+  padding: 2px 4px;
 }
 
 .ft-file {
