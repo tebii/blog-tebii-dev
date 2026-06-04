@@ -5,14 +5,14 @@ import { buildSidebarItems, activeKeyFromPath } from "../lib/sidebar";
 import CommandBar from "../components/CommandBar.astro";
 
 const {
-  title = "tebii.dev",
+  title = "blog.tebii.dev",
   description = "Cybersecurity writeups, HTB walkthroughs, and bug bounty research.",
   canonicalPath,
   currentSlug = "",
 } = Astro.props;
 
 const canonical = canonicalPath
-  ? new URL(canonicalPath, Astro.site ?? "https://tebii.dev").toString()
+  ? new URL(canonicalPath, Astro.site ?? "https://blog.tebii.dev").toString()
   : undefined;
 
 // Auto sidebar + active tab based on URL
@@ -49,7 +49,7 @@ const active = activeKeyFromPath(Astro.url.pathname);
 
         <div class="term-body">
 
-          <SidebarLayout title="tebii.dev" active={active} items={sidebarItems} currentSlug={currentSlug}>
+          <SidebarLayout title="blog.tebii.dev" active={active} items={sidebarItems} currentSlug={currentSlug}>
             <slot />
 
           </SidebarLayout>

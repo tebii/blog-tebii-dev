@@ -1,6 +1,6 @@
 :root{
   /* Catppuccin Mocha-ish */
-  --base: #1e1e2e;
+  --base: #0d1117;
   --mantle: #181825;
   --crust: #11111b;
   --surface0: #313244;
@@ -81,8 +81,6 @@ a:hover{text-decoration:underline}
   font-size: 13px;
   padding: 6px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(205,214,244,.08);
-  background: rgba(17,17,27,.3);
   color: var(--subtext1);
   transition: all 120ms ease;
 }
@@ -93,7 +91,6 @@ a:hover{text-decoration:underline}
 }
 
 .term-tab.active {
-  background: rgba(137,180,250,.12);
   border-color: rgba(137,180,250,.35);
   color: var(--text);
 }
