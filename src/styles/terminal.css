@@ -105,6 +105,8 @@ a:hover{text-decoration:underline}
   display:flex;
   gap: 8px;
   align-items:center;
+  cursor:pointer;
+  text-decoration:none;
 }
 .dot{width:20px;height:20px;border-radius:999px;opacity:.9}
 .dot.r{background:var(--red)}
