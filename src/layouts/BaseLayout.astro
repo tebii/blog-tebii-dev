@@ -30,6 +30,10 @@ const active = activeKeyFromPath(Astro.url.pathname);
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
     <meta name="theme-color" content="#1e1e2e" />
+    <script is:inline>
+      if(sessionStorage.getItem('visited')){document.documentElement.classList.add('no-anim')}
+      else{sessionStorage.setItem('visited','1')}
+    </script>
   </head>
 
   <body>
