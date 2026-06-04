@@ -8,6 +8,7 @@ const {
   title = "tebii.dev",
   description = "Cybersecurity writeups, HTB walkthroughs, and bug bounty research.",
   canonicalPath,
+  currentSlug = "",
 } = Astro.props;
 
 const canonical = canonicalPath
@@ -48,7 +49,7 @@ const active = activeKeyFromPath(Astro.url.pathname);
 
         <div class="term-body">
 
-          <SidebarLayout title="tebii.dev" active={active} items={sidebarItems}>
+          <SidebarLayout title="tebii.dev" active={active} items={sidebarItems} currentSlug={currentSlug}>
             <slot />
 
           </SidebarLayout>

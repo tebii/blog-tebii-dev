@@ -24,6 +24,7 @@ const dateStr = d.date instanceof Date ? d.date.toDateString() : String(d.date);
     title={"tebii.dev / writeups / " + post.data.title}
   canonicalPath={`/writeups/${slug}`}
   description={post.data.description ?? post.data.summary ?? ""}
+  currentSlug={slug}
 >
   <article class="prose">
     <header class="post-header">
