@@ -498,7 +498,7 @@ article pre code{padding:0;border:none;background:transparent}
 
 /* Markdown / writeup typography */
 .prose{
-  max-width: 900px;
+  max-width: 100%;
 }
 
 .post-header{
