@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("writeups")).filter((p) => !p.data.draft);
+  const posts = (await getCollection("posts")).filter((p) => !p.data.draft);
 
   return posts.map((post) => ({
     params: { slug: post.data.slug ?? post.slug }, // ✅ prefer frontmatter slug
@@ -21,8 +21,8 @@ const dateStr = d.date instanceof Date ? d.date.toDateString() : String(d.date);
 ---
 
 <BaseLayout
-    title={"blog.tebii.dev / writeups / " + post.data.title}
-  canonicalPath={`/writeups/${slug}`}
+    title={"blog.tebii.dev / posts / " + post.data.title}
+  canonicalPath={`/posts/${slug}`}
   description={post.data.description ?? post.data.summary ?? ""}
   currentSlug={slug}
 >

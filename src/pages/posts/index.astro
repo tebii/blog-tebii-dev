@@ -3,23 +3,23 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostCard from "../../components/PostCard.astro";
 import { getCollection } from "astro:content";
 
-const writeups = (await getCollection("writeups"))
+const posts = (await getCollection("posts"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 ---
 
 <BaseLayout
-    title="blog.tebii.dev / writeups"
-  canonicalPath="/writeups"
-  active="writeups"
+    title="blog.tebii.dev / posts"
+  canonicalPath="/posts"
+  active="posts"
 >
   <section class="hero">
-    <h1>writeups</h1>
+    <h1>posts</h1>
     <p>some scribbles here and there</p>
   </section>
 
   <section class="grid">
-    {writeups.map((p) => <PostCard post={p} />)}
+    {posts.map((p) => <PostCard post={p} />)}
   </section>
 </BaseLayout>

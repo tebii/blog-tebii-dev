@@ -46,7 +46,7 @@ const placeholder = "type /help or search…";
     if (q === "/help" || q === "help") {
       showHint(`
         <div><b>commands</b></div>
-        <div><code>/go</code> home | writeups | about</div>
+        <div><code>/go</code> home | posts | about</div>
         <div><code>/search</code> &lt;query&gt;</div>
         <div><code>/tag</code> &lt;tag&gt;</div>
         <div><code>clear</code></div>
@@ -64,26 +64,26 @@ const placeholder = "type /help or search…";
     const arg = rest.join(" ").trim();
 
     if (cmd === "/go") {
-      if (!arg) return showHint(`usage: <code>/go writeups</code>`);
-      if (arg === "home") return go("/");
-      if (arg === "writeups") return go("/writeups");
+      if (!arg) return showHint(`usage: <code>/go posts</code>`);
+      if (arg === "home") return go("/home");
+      if (arg === "posts") return go("/posts");
       if (arg === "about") return go("/about");
       return go("/" + arg);
     }
 
     if (cmd === "/search") {
       if (!arg) return showHint(`usage: <code>/search smb</code>`);
-      // You can later implement live filtering on /writeups. For now, route to /writeups?q=
-      return go(`/writeups?q=${encodeURIComponent(arg)}`);
+      // You can later implement live filtering on /posts. For now, route to /posts?q=
+      return go(`/posts?q=${encodeURIComponent(arg)}`);
     }
 
     if (cmd === "/tag") {
       if (!arg) return showHint(`usage: <code>/tag privesc</code>`);
-      return go(`/writeups?tag=${encodeURIComponent(arg)}`);
+      return go(`/posts?tag=${encodeURIComponent(arg)}`);
     }
 
     // default: treat as search
-    return go(`/writeups?q=${encodeURIComponent(q)}`);
+    return go(`/posts?q=${encodeURIComponent(q)}`);
   }
 
   // submit
@@ -112,7 +112,7 @@ const placeholder = "type /help or search…";
       showHint(`try <code>/help</code>`);
       return;
     }
-    if (v.startsWith("/go")) showHint(`examples: <code>/go writeups</code>, <code>/go about</code>`);
+    if (v.startsWith("/go")) showHint(`examples: <code>/go posts</code>, <code>/go about</code>`);
     else if (v.startsWith("/search")) showHint(`example: <code>/search smb</code>`);
     else if (v.startsWith("/tag")) showHint(`example: <code>/tag privesc</code>`);
     else showHint(`press <b>enter</b> to search: <code>${v}</code>`);

@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 
-export type SidebarKey = "home" | "writeups";
+export type SidebarKey = "home" | "posts";
 
 export type SidebarPost = {
   label: string;
@@ -22,7 +22,7 @@ export type SidebarItem = {
 };
 
 export async function buildSidebarItems(): Promise<SidebarItem[]> {
-  const all = (await getCollection("writeups")).filter((p) => !p.data.draft);
+  const all = (await getCollection("posts")).filter((p) => !p.data.draft);
 
   // Group by platform, fallback to "other"
   const map = new Map<string, SidebarPost[]>();
@@ -31,7 +31,7 @@ export async function buildSidebarItems(): Promise<SidebarItem[]> {
     if (!map.has(key)) map.set(key, []);
     map.get(key)!.push({
       label: p.data.title,
-      href: `/writeups/${p.slug}`,
+      href: `/posts/${p.slug}`,
       slug: p.slug,
     });
   }
@@ -42,11 +42,11 @@ export async function buildSidebarItems(): Promise<SidebarItem[]> {
   }));
 
   return [
-    { key: "home", label: "home", href: "/" },
+    { key: "home", label: "home", href: "/home" },
     {
-      key: "writeups",
-      label: "writeups",
-      href: "/writeups",
+      key: "posts",
+      label: "posts",
+      href: "/posts",
       count: all.length,
       groups,
     },
@@ -54,7 +54,7 @@ export async function buildSidebarItems(): Promise<SidebarItem[]> {
 }
 
 export function activeKeyFromPath(pathname: string): SidebarKey {
-  if (pathname === "/") return "home";
-  if (pathname.startsWith("/writeups")) return "writeups";
-  return "writeups";
+  if (pathname === "/" || pathname.startsWith("/home")) return "home";
+  if (pathname.startsWith("/posts")) return "posts";
+  return "posts";
 }

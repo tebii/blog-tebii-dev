@@ -414,7 +414,81 @@ article pre code{padding:0;border:none;background:transparent}
 /* Responsive: sidebar becomes top stack */
 @media (max-width: 860px){
   .app{grid-template-columns: 1fr;}
-  .sidebar{position: relative;}
+  .sidebar{
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid rgba(205,214,244,.10);
+  }
+}
+
+/* Responsive: phones */
+@media (max-width: 600px){
+  .page{
+    width: 100%;
+    padding: 12px 8px 24px;
+  }
+
+  .term{
+    border-radius: 12px;
+    min-height: 0;
+  }
+
+  .term-topbar{
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .term-tabs{
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .term-tab{
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 6px 0;
+  }
+
+  .dot{width:14px;height:14px}
+
+  .term-body{
+    padding: 14px 10px;
+  }
+
+  .app{min-height: 0}
+
+  .sidebar{
+    padding: 10px 8px;
+  }
+
+  .filetree{font-size: 12.5px}
+
+  .content{
+    padding: 12px 8px;
+  }
+
+  .hero{padding: 10px 6px}
+  .hero h1{font-size: 24px}
+
+  .post-header{padding: 12px}
+  .post-header h1{font-size: 24px}
+
+  .grid{gap: 10px}
+
+  .card{padding: 12px}
+
+  .cmdbar-inner{
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .cmdbar-hint{
+    font-size: 11.5px;
+  }
 }
 
 /* Markdown / writeup typography */

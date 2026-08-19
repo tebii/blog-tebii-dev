@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("posts"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const latest = posts.slice(0, 6);
+
+---
+
+<BaseLayout
+  title="blog.tebii.dev / home"
+  canonicalPath="/home"
+  active="home"
+  description="i dream of electric sheep"
+>
+  <section class="hero">
+    <p>
+    i do some security research</p>
+    <p>/ᐠ .ᆺ. ᐟ\ﾉ</p>
+  </section>
+
+  <section style="margin-top:14px">
+    <h2 style="margin:0 0 10px;font-size:16px;color:var(--subtext1)">
+      latest posts
+    </h2>
+
+    {latest.length ? (
+      <div class="grid">
+        {latest.map((p) => <PostCard post={p} />)}
+      </div>
+    ) : (
+      <div class="card">
+        <h2 style="margin:0 0 6px;font-size:18px">no posts yet :(</h2>
+      </div>
+    )}
+  </section>
+</BaseLayout>
