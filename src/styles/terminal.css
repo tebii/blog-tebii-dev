@@ -16,6 +16,9 @@
   --green: #a6e3a1;
   --yellow: #f9e2af;
   --red: #f38ba8;
+  --peach: #fab387;
+  --pink: #f5c2e7;
+  --teal: #94e2d5;
 
   --border: rgba(205,214,244,.14);
   --border2: rgba(205,214,244,.22);
@@ -510,6 +513,7 @@ article pre code{padding:0;border:none;background:transparent}
   margin: 0;
   font-size: 34px;
   letter-spacing: .2px;
+  color: var(--mauve);
 }
 
 .post-desc{
@@ -517,25 +521,51 @@ article pre code{padding:0;border:none;background:transparent}
   color: var(--subtext0);
 }
 
-.post-body :global(h2){
+.post-body h1{
   margin-top: 26px;
-  font-size: 22px;
+  font-size: 28px;
+  color: var(--mauve);
 }
 
-.post-body :global(p),
-.post-body :global(li){
+.post-body h2{
+  margin-top: 26px;
+  font-size: 22px;
+  color: var(--blue);
+}
+
+.post-body h3{
+  margin-top: 22px;
+  font-size: 18px;
+  color: var(--teal);
+}
+
+.post-body h4,
+.post-body h5,
+.post-body h6{
+  margin-top: 18px;
+  color: var(--pink);
+}
+
+.post-body strong,
+.post-body b{
+  color: var(--peach);
+  font-weight: 700;
+}
+
+.post-body p,
+.post-body li{
   line-height: 1.7;
   color: var(--text);
 }
 
-.post-body :global(code){
+.post-body code{
   padding: 2px 6px;
   border-radius: 8px;
   border: 1px solid rgba(205,214,244,.10);
   background: rgba(49,50,68,.22);
 }
 
-.post-body :global(pre){
+.post-body pre{
   padding: 14px;
   border-radius: 14px;
   border: 1px solid rgba(205,214,244,.10);
