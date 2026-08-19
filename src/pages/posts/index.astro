@@ -14,11 +14,7 @@ const posts = (await getCollection("posts"))
   canonicalPath="/posts"
   active="posts"
 >
-  <section class="hero">
-    <p>ramblings of the deranged</p>
-  </section>
-
-  <section class="grid">
+    <section class="grid">
     {posts.map((p) => <PostCard post={p} />)}
   </section>
 </BaseLayout>

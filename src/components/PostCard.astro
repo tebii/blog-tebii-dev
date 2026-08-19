@@ -10,8 +10,8 @@ const dateStr = d.date instanceof Date ? d.date.toDateString() : String(d.date);
 
   <div class="meta">
     <span>{dateStr}</span>
-    {d.platform && <span>• {d.platform}</span>}
-    {d.difficulty && <span>• {d.difficulty}</span>}
+    {d.platform && <span>| {d.platform}</span>}
+    {d.difficulty && <span>| {d.difficulty}</span>}
   </div>
 
   {d.tags?.length ? (
