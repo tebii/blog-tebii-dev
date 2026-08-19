@@ -1,8 +1,8 @@
 ---
-title: "a summer of cert grinding"
+title: "a summer of certs grinding"
 date: 2026-08-19
-tags: ["comptia", "certification", "ccna", "cisco"]
-platform: "certs"
+tags: ["comptia", "certification", "ccna", "cisco", "security+"]
+platform: "certifications"
 draft: false
 summary: "tips on how i got my first certification (comptia security+) and second certification (CCNA) during first year summer break"
 ---
