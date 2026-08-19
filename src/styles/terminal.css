@@ -46,10 +46,10 @@ a:hover{text-decoration:underline}
 
 
 .page{
-  max-width: 1400px;   /* increase size */
-  width: 95%;
+  max-width: min(1800px, 94vw);
+  width: 100%;
   margin: 0 auto;
-  padding: 24px 20px 40px;
+  padding: clamp(24px, 2.2vw, 44px) clamp(20px, 2vw, 40px) clamp(40px, 3.5vw, 64px);
 }
 .no-anim .term{animation:none}
 
@@ -606,6 +606,25 @@ position: static;
   border: 1px solid rgba(205,214,244,.10);
   background: rgba(49,50,68,.22);
   color: var(--text);
+}
+
+/* Large screens: let the terminal breathe instead of floating small in the middle */
+@media (min-width: 1600px){
+  .page{ max-width: min(2100px, 90vw); }
+  .term-body{ padding: 28px 26px; }
+  .app{ grid-template-columns: clamp(220px, 15vw, 300px) 1fr; }
+  .hero h1{ font-size: 40px; }
+  .post-header h1{ font-size: 40px; }
+  .filetree{ font-size: 14px; }
+}
+
+@media (min-width: 2200px){
+  .page{ max-width: min(2500px, 86vw); }
+  .term-body{ padding: 34px 32px; }
+  .app{ grid-template-columns: clamp(240px, 14vw, 340px) 1fr; }
+  html{ font-size: 18px; }
+  .hero h1{ font-size: 46px; }
+  .post-header h1{ font-size: 46px; }
 }
 
 
