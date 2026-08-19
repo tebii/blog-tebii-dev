@@ -95,12 +95,22 @@ a:hover{text-decoration:underline}
   border-bottom: 1px solid var(--border);
 }
 
+.term-tabs {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .term-tab {
+  display: block;
   font-size: 13px;
   padding: 6px 12px;
   border-radius: 999px;
   color: var(--subtext1);
   transition: all 120ms ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .term-tab:hover {
@@ -118,6 +128,7 @@ a:hover{text-decoration:underline}
   align-items:center;
   cursor:pointer;
   text-decoration:none;
+  flex-shrink: 0;
 }
 .dot{width:20px;height:20px;border-radius:999px;opacity:.9}
 .dot.r{background:var(--red)}
@@ -438,22 +449,11 @@ article pre code{padding:0;border:none;background:transparent}
   }
 
   .term-topbar{
-    flex-wrap: wrap;
     gap: 8px;
     padding: 10px 12px;
   }
 
-  .term-tabs{
-    min-width: 0;
-    overflow: hidden;
-  }
-
   .term-tab{
-    display: inline-block;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     padding: 6px 0;
   }
 
